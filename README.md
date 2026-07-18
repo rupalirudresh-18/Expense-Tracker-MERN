@@ -1,77 +1,123 @@
-# Expense Tracker (MERN Stack)
+# 💰 Expense Tracker — MERN Stack
 
-A full-stack expense tracker with JWT authentication, categories, and
-dashboard analytics — built with MongoDB, Express, React, and Node.
+A full-stack expense tracking app with JWT authentication, custom categories,
+and a visual analytics dashboard — built with MongoDB, Express, React, and Node.js.
 
-## Features
-- **Auth**: Register/login with JWT, passwords hashed with bcrypt
-- **Categories**: Custom categories with color tags, per user
-- **Expenses**: Add/edit/delete expenses, filter by category, paginated list
-- **Dashboard**: Monthly total spend, pie chart + bar chart breakdown by category (Recharts)
+🔗 **Live Demo**: [https://expense-tracker-mern-teal.vercel.app](#)
+---
 
-## Project structure
+## 📸 Screenshots
+
+### Login & Register
+![Login Page](screenshots/login.png)
+
+
+### Dashboard — Monthly spend breakdown 
+![Dashboard](screenshots/dashboard.png)
+
+### Expenses — Add, filter, edit, delete
+![Expenses](screenshots/expenses.png)
+
+### Categories — Custom, color-coded
+![Creating Categories](screenshots/categories.png)
+
+---
+
+## ✨ Features
+
+- 🔐 **Authentication** — Register/login with JWT, passwords hashed with bcrypt
+- 🏷️ **Categories** — Create custom categories with color tags, scoped per user
+- 💸 **Expenses** — Add, edit, delete, and filter expenses by category/date
+- 📊 **Dashboard** — Monthly total spend with pie chart + bar chart breakdown by category (Recharts)
+- 🔒 **Data isolation** — Every query is scoped to the logged-in user; no cross-user data leakage
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Tech |
+|---|---|
+| Frontend | React, React Router, Recharts, Axios |
+| Backend | Node.js, Express |
+| Database | MongoDB (Mongoose) |
+| Auth | JWT, bcrypt |
+| Deployment | Vercel (frontend), Railway (backend + MongoDB) |
+
+---
+
+## 📁 Project Structure
+
 ```
 expense-tracker/
-├── server/          # Express + MongoDB API
+├── server/                 # Express + MongoDB API
 │   ├── config/db.js
-│   ├── models/       (User, Category, Expense)
+│   ├── models/              (User, Category, Expense)
 │   ├── controllers/
 │   ├── routes/
 │   ├── middleware/authMiddleware.js
 │   └── server.js
-└── client/          # React frontend
-    └── src/
-        ├── api/axios.js
-        ├── context/AuthContext.js
-        ├── components/ (Navbar, ExpenseForm, ExpenseList, ProtectedRoute)
-        └── pages/ (Login, Register, Dashboard, Expenses, Categories)
+├── client/                 # React frontend
+│   └── src/
+│       ├── api/axios.js
+│       ├── context/AuthContext.js
+│       ├── components/       (Navbar, ExpenseForm, ExpenseList, ProtectedRoute)
+│       └── pages/            (Login, Register, Dashboard, Expenses, Categories)
+└── screenshots/
 ```
 
-## Setup
+---
 
-### 1. Backend
+## 🚀 Running Locally
+
+### Backend
 ```bash
 cd server
 npm install
-cp .env.example .env   # fill in MONGO_URI (MongoDB Atlas free tier works) and JWT_SECRET
-npm run dev             # starts on http://localhost:5000
+cp .env.example .env   
+npm run dev           
 ```
 
-### 2. Frontend
-Merge the `client/src` files here into your existing React app, then install
-the extra packages it needs:
+### Frontend
 ```bash
 cd client
-npm install axios react-router-dom recharts
-cp .env.example .env
-npm start               # starts on http://localhost:3000
+npm install
+cp .env.example .env   
+npm start              
 ```
 
-## API overview
+---
 
-| Method | Endpoint | Description |
-|---|---|---|
-| POST | /api/auth/register | Create account |
-| POST | /api/auth/login | Log in, returns JWT |
-| GET | /api/auth/me | Current user (protected) |
-| GET/POST | /api/categories | List / create categories (protected) |
-| PUT/DELETE | /api/categories/:id | Update / delete category |
-| GET/POST | /api/expenses | List (with filters) / create expense |
-| PUT/DELETE | /api/expenses/:id | Update / delete expense |
-| GET | /api/expenses/summary?month=YYYY-MM | Category breakdown for charts |
+## 📡 API Reference
 
-All routes except register/login require `Authorization: Bearer <token>`.
+| Method | Endpoint | Auth | Description |
+|---|---|---|---|
+| POST | `/api/auth/register` | ❌ | Create account |
+| POST | `/api/auth/login` | ❌ | Log in, returns JWT |
+| GET | `/api/auth/me` | ✅ | Get current user |
+| GET | `/api/categories` | ✅ | List categories |
+| POST | `/api/categories` | ✅ | Create category |
+| PUT | `/api/categories/:id` | ✅ | Update category |
+| DELETE | `/api/categories/:id` | ✅ | Delete category |
+| GET | `/api/expenses` | ✅ | List expenses (supports `category`, `startDate`, `endDate`, `page` query params) |
+| POST | `/api/expenses` | ✅ | Create expense |
+| PUT | `/api/expenses/:id` | ✅ | Update expense |
+| DELETE | `/api/expenses/:id` | ✅ | Delete expense |
+| GET | `/api/expenses/summary?month=YYYY-MM` | ✅ | Category breakdown for dashboard charts |
 
-## Notes for placement interviews
-Things worth highlighting when you talk about this project:
-- **Data isolation per user**: every query is scoped to `req.user._id`, so
-  one user can never see another's data — good to mention when asked about
-  security.
-- **Aggregation pipeline**: the `/summary` endpoint uses MongoDB's
-  `$lookup`/`$group` aggregation instead of pulling all expenses and
-  summing in JS — shows you can push work to the database layer.
-- **JWT + bcrypt**: standard, interview-friendly auth flow you can explain
-  end-to-end (hash on register, compare on login, verify middleware on
-  protected routes).
-- Good next additions if you want to go further: recurring expenses, CSV
-  export, budget limits per category with alerts, refresh tokens.
+
+---
+
+
+
+## 🔮 Possible Extensions
+
+- Recurring/scheduled expenses
+- Budget limits per category with alerts
+- CSV/PDF export of expense history
+- Multi-currency support
+
+---
+
+## 👤 Author
+
+Rupali R
