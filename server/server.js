@@ -8,7 +8,6 @@ const categoryRoutes = require("./routes/categoryRoutes");
 const expenseRoutes = require("./routes/expenseRoutes");
 
 connectDB();
-
 const app = express();
 
 app.use(cors({ origin: "https://expense-tracker-mern-teal.vercel.app" }));
