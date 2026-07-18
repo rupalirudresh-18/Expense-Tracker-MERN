@@ -3,7 +3,7 @@
 A full-stack expense tracking app with JWT authentication, custom categories,
 and a visual analytics dashboard — built with MongoDB, Express, React, and Node.js.
 
-🔗 **Live Demo**: [https://expense-tracker-mern-teal.vercel.app](#)
+🔗 **Live Demo**: https://expense-tracker-mern-teal.vercel.app(#)
 ---
 
 ## 📸 Screenshots
