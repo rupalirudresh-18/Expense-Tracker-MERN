@@ -11,7 +11,7 @@ connectDB();
 
 const app = express();
 
-app.use(cors());
+app.use(cors({ origin: "https://expense-tracker-mern-teal.vercel.app/" }));
 app.use(express.json());
 
 app.get("/api/health", (req, res) => res.json({ status: "ok" }));
