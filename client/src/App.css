@@ -1,0 +1,56 @@
+* { box-sizing: border-box; font-family: "Segoe UI", Arial, sans-serif; }
+body { margin: 0; background: #f4f5fb; color: #222; }
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 24px;
+  background: #6C63FF;
+  color: white;
+}
+.navbar .brand { color: white; font-weight: bold; text-decoration: none; font-size: 1.2rem; }
+.nav-links { display: flex; align-items: center; gap: 16px; }
+.nav-links a { color: white; text-decoration: none; }
+.nav-links button {
+  background: white; color: #6C63FF; border: none; border-radius: 6px;
+  padding: 6px 12px; cursor: pointer;
+}
+
+.page { max-width: 900px; margin: 24px auto; padding: 0 20px; }
+
+.auth-page { display: flex; justify-content: center; margin-top: 60px; }
+.auth-form {
+  background: white; padding: 32px; border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08); width: 320px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.auth-form input, .expense-form input, .expense-form select, .inline-form input, .inline-form select {
+  padding: 10px; border: 1px solid #ddd; border-radius: 6px;
+}
+.auth-form button, .expense-form button, .inline-form button {
+  background: #6C63FF; color: white; border: none; border-radius: 6px;
+  padding: 10px; cursor: pointer; font-weight: 600;
+}
+
+.expense-form, .inline-form {
+  display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px;
+  background: white; padding: 16px; border-radius: 10px;
+}
+
+.expense-table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; }
+.expense-table th, .expense-table td { padding: 10px 14px; text-align: left; border-bottom: 1px solid #eee; }
+.expense-table button { margin-right: 6px; }
+
+.category-list { list-style: none; padding: 0; }
+.category-list li {
+  display: flex; align-items: center; gap: 10px; background: white;
+  padding: 10px 14px; border-radius: 8px; margin-bottom: 8px;
+}
+.category-list button { margin-left: auto; }
+
+.swatch { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 6px; }
+
+.charts-row { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 16px; }
+.error { color: #e63946; }
+.filter-row { margin: 14px 0; }
